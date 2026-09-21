@@ -1,0 +1,24 @@
+{
+  "kind": "evm_project",
+  "token": {
+    "contract": "Streamline",
+    "name": "Streamline",
+    "symbol": "STRM",
+    "decimals": 18
+  },
+  "contracts": [
+    {
+      "contract": "StreamingVault",
+      "constructorArgs": [
+        "$token"
+      ]
+    }
+  ],
+  "pool": {
+    "pairedCurrency": "0x0000000000000000000000000000000000000000",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "notes": "Deploy Streamline, a fixed-supply 18-decimal STRM token, followed by StreamingVault with the deployed token address as its sole constructor argument. StreamingVault supports sender-funded linear STRM streams, recipient withdrawals of accrued funds, and sender cancellation that settles accrued tokens to the recipient and returns unaccrued tokens to the sender. The pool pairs STRM with native ETH and has no hook."
+}
