@@ -1,0 +1,26 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+libs = ["lib"]
+
+# Pinned so the offline verifier compiles exactly what was tested. The protected
+# suites are written against 0.8.26, so the whole tree is built with it.
+solc_version = "0.8.26"
+evm_version = "cancun"
+
+optimizer = true
+optimizer_runs = 200
+
+# Sepolia policy v3 term. `cbor_metadata = false` additionally drops the trailing
+# CBOR blob, so the deployed runtime is code only: the project floor's opcode scan
+# steps over PUSH immediates but not over appended metadata, and a stray 0xF4 /
+# 0xFF byte in that blob would read as DELEGATECALL / SELFDESTRUCT.
+bytecode_hash = "none"
+cbor_metadata = false
+
+# No host access of any kind from tests or builds.
+ffi = false
+
+[fmt]
+line_length = 120
